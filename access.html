@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About｜マリッジラボ浜松</title>
-  <meta name="description" content="マリッジラボ浜松について。「結婚」をゴールにしない、人生の設計図から描く婚活を提供します。">
+  <title>Access｜マリッジラボ浜松</title>
+  <meta name="description" content="マリッジラボ浜松のアクセス情報。〒435-0048 静岡県浜松市中央区上西町1099 稲垣不動産ビル2。営業時間や定休日もご確認ください。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -12,28 +12,119 @@
   <link rel="icon" type="image/png" href="assets/logo.png">
 
   <!-- Meta -->
-  <meta name="keywords" content="結婚相談所,浜松,婚活,マリッジラボ浜松,浜松婚活,結婚,お見合い">
+  <meta name="keywords" content="結婚相談所,浜松,マリッジラボ浜松,アクセス,上西町,浜松市中央区,営業時間">
   <meta name="author" content="マリッジラボ浜松">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#e8748a">
-  <link rel="canonical" href="https://marriage-lab.com/about.html">
+  <link rel="canonical" href="https://marriage-lab.com/access.html">
 
   <!-- OGP -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="マリッジラボ浜松">
   <meta property="og:locale" content="ja_JP">
-  <meta property="og:url" content="https://marriage-lab.com/about.html">
-  <meta property="og:title" content="About｜マリッジラボ浜松">
-  <meta property="og:description" content="マリッジラボ浜松について。「結婚」をゴールにしない、人生の設計図から描く婚活を提供します。">
+  <meta property="og:url" content="https://marriage-lab.com/access.html">
+  <meta property="og:title" content="Access｜マリッジラボ浜松">
+  <meta property="og:description" content="マリッジラボ浜松のアクセス情報。静岡県浜松市中央区上西町1099 稲垣不動産ビル2。">
   <meta property="og:image" content="https://marriage-lab.com/assets/ogp.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="About｜マリッジラボ浜松">
-  <meta name="twitter:description" content="マリッジラボ浜松について。「結婚」をゴールにしない、人生の設計図から描く婚活を提供します。">
+  <meta name="twitter:title" content="Access｜マリッジラボ浜松">
+  <meta name="twitter:description" content="マリッジラボ浜松のアクセス情報。静岡県浜松市中央区上西町1099 稲垣不動産ビル2。">
   <meta name="twitter:image" content="https://marriage-lab.com/assets/ogp.jpg">
+
+  <style>
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 56px;
+      align-items: start;
+    }
+    .access-info-block {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .access-card {
+      background: var(--white);
+      border: 1.5px solid var(--pink-light);
+      border-radius: var(--radius);
+      padding: 28px 28px 24px;
+    }
+    .access-card-label {
+      font-family: var(--font-en);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .access-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 10px;
+    }
+    .access-card-text {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.9;
+    }
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .hours-table tr {
+      border-bottom: 1px solid var(--gray-light);
+    }
+    .hours-table tr:last-child {
+      border-bottom: none;
+    }
+    .hours-table td {
+      padding: 8px 0;
+      color: var(--gray);
+    }
+    .hours-table td:first-child {
+      font-weight: 700;
+      color: var(--brown);
+      width: 48px;
+    }
+    .hours-table .closed td {
+      color: var(--pink);
+    }
+    .hours-table .closed td:first-child {
+      color: var(--pink);
+    }
+    .hours-table .half td:last-child {
+      color: var(--gold);
+    }
+    .map-wrap {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1.5px solid var(--pink-light);
+      height: 100%;
+      min-height: 360px;
+    }
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      display: block;
+    }
+    @media (max-width: 900px) {
+      .access-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .map-wrap { min-height: 300px; }
+      .map-wrap iframe { min-height: 300px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -66,99 +157,79 @@
 <section class="page-hero">
   <canvas id="hero-canvas"></canvas>
   <div class="page-hero-inner">
-    <span class="page-hero-label">Our Philosophy</span>
-    <h1 class="page-hero-title">「結婚」をゴールにしない。<br><span style="color:var(--pink);">人生の「設計図」</span>から描く婚活。</h1>
+    <span class="page-hero-label">Access</span>
+    <h1 class="page-hero-title">お気軽に、<br><span style="color:var(--pink);">ご来所ください。</span></h1>
   </div>
 </section>
 
-
-
-<!-- Lead Text -->
+<!-- Access Info -->
 <section class="section">
-  <div class="container">
-    <div style="max-width:720px; margin:0 auto; text-align:center;" class="reveal">
-      <p class="section-lead" style="margin:0 auto;">
-        マリッジラボ浜松は、浜松市で真剣に未来を見据える30代・40代のための、新しい形の結婚相談所です。私たちが提供するのは、単なる「お相手とのマッチング」ではありません。<br><br>
-        一人ひとりと向き合う対面コンサルティングを軸に、理想のパートナー探しから、その先の「幸せな家庭」を支えるライフプラン設計まで。データと対話を重んじる「ラボ（研究所）」として、あなたの人生を徹底的にバックアップします。<br><br>
-        誰もが理想のパートナーと共に、この街で充実した人生を歩める社会へ。私たちは、その一歩に全力を尽くします。
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Features Grid -->
-<section class="section section--cream">
   <div class="container">
     <div style="text-align:center;" class="reveal">
-      <span class="en-label">Our Strengths</span>
+      <span class="en-label">Location &amp; Hours</span>
       <div class="divider"></div>
-      <h2 class="section-title">お客様の幸せを最優先にした取り組み</h2>
+      <h2 class="section-title">所在地・営業時間</h2>
     </div>
 
-    <div class="features-grid reveal" style="margin-top:48px;">
-      <div class="feature-item">
-        <div class="feature-item-icon">✨</div>
-        <h3 class="feature-item-title">独自サービス</h3>
-        <p class="feature-item-text">独自のサポートで成婚率を高め、多くのカップルを誕生させています。</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-item-icon">⭐</div>
-        <h3 class="feature-item-title">高い満足度</h3>
-        <p class="feature-item-text">お客様の声を反映したサービス改善により、高い満足度を維持しています。</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-item-icon">🏙️</div>
-        <h3 class="feature-item-title">地域連携</h3>
-        <p class="feature-item-text">地元企業やコミュニティと連携し、地域に貢献する婚活活動を実施しています。</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-item-icon">💻</div>
-        <h3 class="feature-item-title">オンラインサービス</h3>
-        <p class="feature-item-text">忙しい方にも対応できるよう、オンライン婚活サービスを強化しました。</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <div class="access-grid">
 
-<!-- Photo Section -->
-<section class="split-section">
-  <div class="split-visual reveal-left">
-    <img src="assets/photo-about2.jpg" alt="purpose" onerror="this.parentElement.style.minHeight='480px'">
-  </div>
-  <div class="split-content reveal-right">
-    <div class="split-content-inner">
-      <span class="en-label">Our Promise</span>
-      <div class="divider divider--left"></div>
-      <h2 class="section-title">マリッジラボ浜松が、<br>お客様と結ぶ「3つの約束」</h2>
-    </div>
-  </div>
-</section>
+      <!-- 左カラム：住所 + 営業時間 -->
+      <div class="access-info-block">
 
-<!-- Promises -->
-<section class="section">
-  <div class="container">
-    <div class="promises-list" style="max-width:720px; margin:0 auto;">
-      <div class="promise-item reveal">
-        <span class="promise-num">01</span>
-        <div>
-          <h3 class="promise-title">徹底した個別伴走</h3>
-          <p class="promise-text">一人ひとりの価値観に寄り添い、画一的ではない「あなただけの成婚戦略」を共に描きます。</p>
+        <div class="access-card reveal">
+          <span class="access-card-label">Address</span>
+          <h3 class="access-card-title">所在地</h3>
+          <p class="access-card-text">
+            〒435-0048<br>
+            静岡県浜松市中央区上西町1099<br>
+            稲垣不動産ビル2
+          </p>
         </div>
-      </div>
-      <div class="promise-item reveal">
-        <span class="promise-num">02</span>
-        <div>
-          <h3 class="promise-title">誠実と透明性</h3>
-          <p class="promise-text">安心・安全な婚活環境を守るため、常に誠実でオープンなコミュニケーションを徹底し、揺るぎない信頼関係を築きます。</p>
+
+        <div class="access-card reveal">
+          <span class="access-card-label">Business Hours</span>
+          <h3 class="access-card-title">営業時間</h3>
+          <table class="hours-table">
+            <tbody>
+              <tr class="closed">
+                <td>月</td>
+                <td>定休日</td>
+              </tr>
+              <tr>
+                <td>火</td>
+                <td>10:00 〜 19:00</td>
+              </tr>
+              <tr>
+                <td>水</td>
+                <td>10:00 〜 19:00</td>
+              </tr>
+              <tr class="half">
+                <td>木</td>
+                <td>10:00 〜 12:00</td>
+              </tr>
+              <tr>
+                <td>金</td>
+                <td>10:00 〜 19:00</td>
+              </tr>
+              <tr>
+                <td>土</td>
+                <td>10:00 〜 19:00</td>
+              </tr>
+              <tr>
+                <td>日</td>
+                <td>10:00 〜 19:00</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+
       </div>
-      <div class="promise-item reveal">
-        <span class="promise-num">03</span>
-        <div>
-          <h3 class="promise-title">期待を超える価値</h3>
-          <p class="promise-text">出会いの提供はもちろん、成婚後のライフプランまで見据え、お客様の人生がより豊かになるよう、常にプラスアルファのサポートを追求します。</p>
-        </div>
+
+      <!-- 右カラム：マップ -->
+      <div class="map-wrap reveal">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3279.299482637639!2d137.75683027574544!3d34.722844772911806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601adf1feb5ff301%3A0x56fecad3550d3267!2z44Oe44Oq44OD44K444Op44Oc5rWc5p2-!5e0!3m2!1sja!2sjp!4v1780409565035!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
+
     </div>
   </div>
 </section>
