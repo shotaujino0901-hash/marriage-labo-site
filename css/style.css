@@ -521,6 +521,8 @@ ul  { list-style: none; }
   line-height: 1.9;
 }
 
+.nav-sns { display: none; }
+
 /* ============================================================
    Flow Steps (services page)
    ============================================================ */
@@ -952,7 +954,7 @@ ul  { list-style: none; }
   .site-nav .btn { width: 100%; justify-content: center; }
 
   .nav-sns {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     align-items: center;
     gap: 20px;
