@@ -9,9 +9,16 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger deploy webhook
-        run: |
-          curl -X POST https://marriage-lab.com/deploy.php \
-            -H "Content-Type: application/json" \
-            -d '{"ref":"refs/heads/main"}' \
-            --fail --silent --show-error
+      - uses: actions/checkout@v4
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: sv16738.xserver.jp
+          username: xs003533
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /marriage-lab.com/public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            deploy.php
