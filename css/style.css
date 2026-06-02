@@ -173,8 +173,14 @@ ul  { list-style: none; }
 }
 
 .site-logo img {
-  height: 44px;
+  height: 64px;
   width: auto;
+}
+
+@media (max-width: 900px) {
+  .site-logo img {
+    height: 52px;
+  }
 }
 
 .site-nav ul {
