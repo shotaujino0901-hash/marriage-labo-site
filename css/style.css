@@ -953,6 +953,8 @@ ul  { list-style: none; }
 
   .nav-sns {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 20px;
     margin-top: 36px;
     padding-top: 28px;
@@ -964,6 +966,7 @@ ul  { list-style: none; }
     transition: opacity var(--transition);
   }
   .nav-sns a:hover { opacity: 1; }
+  .nav-sns svg { width: 32px; height: 32px; }
 
   .hero-image { display: none; }
   .hero-content { padding-top: 120px; }
