@@ -1,41 +1,147 @@
 /* ============================================================
-   Floating Petals Animation (Hero)
+   Hero Canvas — Particles + Rings
    ============================================================ */
 (function () {
-  const container = document.querySelector('.hero-petals');
-  if (!container) return;
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
 
-  const PETAL_COUNT = 18;
+  function resize() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', () => { resize(); initParticles(); });
 
-  for (let i = 0; i < PETAL_COUNT; i++) {
-    const petal = document.createElement('div');
-    const size  = Math.random() * 12 + 6;
-    const left  = Math.random() * 100;
-    const delay = Math.random() * 10;
-    const dur   = Math.random() * 8 + 10;
-
-    petal.style.cssText = `
-      position: absolute;
-      width: ${size}px;
-      height: ${size}px;
-      left: ${left}%;
-      top: -${size}px;
-      border-radius: 50% 0 50% 0;
-      background: rgba(232,116,138,${Math.random() * 0.25 + 0.1});
-      animation: petalFall ${dur}s ${delay}s ease-in-out infinite;
-      transform: rotate(${Math.random() * 360}deg);
-    `;
-    container.appendChild(petal);
+  /* --- Particles --- */
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x    = Math.random() * canvas.width;
+      this.y    = Math.random() * canvas.height;
+      this.r    = Math.random() * 2.5 + 0.5;
+      this.vx   = (Math.random() - 0.5) * 0.4;
+      this.vy   = (Math.random() - 0.5) * 0.4;
+      this.alpha = Math.random() * 0.5 + 0.2;
+      const hue = Math.random() < 0.6 ? '232,116,138' : '196,149,74';
+      this.color = `rgba(${hue},`;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > canvas.width)  this.vx *= -1;
+      if (this.y < 0 || this.y > canvas.height)  this.vy *= -1;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = this.color + this.alpha + ')';
+      ctx.fill();
+    }
   }
 
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes petalFall {
-      0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(110vh) rotate(540deg); opacity: 0; }
+  /* --- Rings --- */
+  class Ring {
+    constructor() { this.reset(true); }
+    reset(initial) {
+      this.x     = Math.random() * canvas.width;
+      this.y     = Math.random() * canvas.height;
+      this.r     = initial ? Math.random() * 80 : 10;
+      this.maxR  = Math.random() * 120 + 60;
+      this.speed = Math.random() * 0.4 + 0.2;
+      this.alpha = initial ? Math.random() * 0.12 : 0.12;
+      this.width = Math.random() * 1.5 + 0.5;
+      const hue = Math.random() < 0.5 ? '232,116,138' : '247,197,207';
+      this.color = `rgba(${hue},`;
     }
-  `;
-  document.head.appendChild(style);
+    update() {
+      this.r += this.speed;
+      this.alpha = 0.12 * (1 - this.r / this.maxR);
+      if (this.r > this.maxR) this.reset(false);
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.strokeStyle = this.color + this.alpha + ')';
+      ctx.lineWidth = this.width;
+      ctx.stroke();
+    }
+  }
+
+  let particles = [];
+  let rings     = [];
+
+  function initParticles() {
+    const n = Math.min(Math.floor(canvas.width * canvas.height / 8000), 70);
+    particles = Array.from({ length: n }, () => new Particle());
+    rings     = Array.from({ length: 8 }, () => new Ring());
+  }
+  initParticles();
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    rings.forEach(r => { r.update(); r.draw(); });
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+/* ============================================================
+   Typewriter Effect
+   ============================================================ */
+(function () {
+  const el = document.querySelector('.typewriter-target');
+  if (!el) return;
+
+  let lines;
+  try { lines = JSON.parse(el.dataset.lines); } catch (e) { return; }
+
+  const cursor = document.createElement('span');
+  cursor.className = 'typewriter-cursor';
+  el.appendChild(cursor);
+
+  let lineIdx = 0;
+  let charIdx = 0;
+  let lineEl  = null;
+
+  function nextLine() {
+    lineEl = document.createElement('span');
+    lineEl.style.display = 'block';
+    el.insertBefore(lineEl, cursor);
+    charIdx = 0;
+    typeChar();
+  }
+
+  function typeChar() {
+    if (charIdx < lines[lineIdx].length) {
+      lineEl.textContent += lines[lineIdx][charIdx];
+      charIdx++;
+      setTimeout(typeChar, 80);
+    } else {
+      lineIdx++;
+      if (lineIdx < lines.length) {
+        setTimeout(nextLine, 300);
+      } else {
+        // 全行完了 → カーソル消してサブテキスト表示
+        setTimeout(() => {
+          cursor.style.display = 'none';
+          document.querySelectorAll('.hero-delayed').forEach((el, i) => {
+            setTimeout(() => el.classList.add('is-visible'), i * 200);
+          });
+        }, 400);
+      }
+    }
+  }
+
+  // ページ読み込み後に開始
+  window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      const hc = document.querySelector('.hero-content');
+      if (hc) hc.classList.add('is-visible');
+      setTimeout(nextLine, 300);
+    }, 400);
+  });
 })();
 
 /* ============================================================
@@ -55,16 +161,6 @@
     observer.observe(el);
   });
 })();
-
-/* ============================================================
-   Hero content reveal on load
-   ============================================================ */
-window.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    const hc = document.querySelector('.hero-content');
-    if (hc) hc.classList.add('is-visible');
-  }, 200);
-});
 
 /* ============================================================
    Drawer Menu

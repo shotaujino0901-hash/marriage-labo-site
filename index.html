@@ -64,7 +64,9 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-petals"></div>
+  <div class="hero-petals">
+    <canvas id="hero-canvas"></canvas>
+  </div>
   <div class="hero-image">
     <!-- 写真を assets/photo-hero.jpg として配置してください -->
     <img src="assets/photo-hero.jpg" alt="結婚式の写真" onerror="this.style.display='none'">
@@ -72,17 +74,14 @@
   <div class="container">
     <div class="hero-content">
       <span class="hero-label">Marriage Counseling / Hamamatsu</span>
-      <h1 class="hero-title">
-        浜松で、本気の婚活。<br>
-        一歩先にある、<span>新しい日常</span>へ。
-      </h1>
-      <p class="hero-sub">
+      <h1 class="hero-title typewriter-target" data-lines='["浜松で、本気の婚活。","一歩先にある、新しい日常へ。"]'></h1>
+      <p class="hero-sub hero-delayed" style="opacity:0;">
         結婚への一歩は、誰だって不安なもの。<br>
         だからこそ、マリッジラボ浜松は「全力」にこだわります。<br>
         まずは気軽なご相談から。あなたの新しい物語を、<br>
         私たちと一緒に始めましょう。
       </p>
-      <div class="hero-btns">
+      <div class="hero-btns hero-delayed" style="opacity:0;">
         <a href="contact.html" class="btn btn--primary">
           無料相談を申し込む
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
