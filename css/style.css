@@ -523,6 +523,89 @@ ul  { list-style: none; }
 }
 
 /* ============================================================
+   Flow Steps (services page)
+   ============================================================ */
+.flow-steps {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  margin-top: 56px;
+}
+
+.flow-step-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.flow-step {
+  background: var(--white);
+  border: 1.5px solid var(--pink-light);
+  border-radius: var(--radius);
+  padding: 32px 20px 28px;
+  text-align: center;
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.flow-step:hover {
+  box-shadow: 0 8px 32px rgba(232,116,138,0.14);
+  transform: translateY(-4px);
+}
+
+.flow-step-num {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--pink);
+  color: var(--white);
+  font-family: var(--font-en);
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.02em;
+}
+
+.flow-step-icon {
+  font-size: 32px;
+  margin: 8px 0 14px;
+  line-height: 1;
+}
+
+.flow-step-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 10px;
+}
+
+.flow-step-text {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.85;
+}
+
+.flow-step-arrow {
+  flex-shrink: 0;
+  width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pink-light);
+  padding-top: 16px;
+}
+
+
+/* ============================================================
    Features Grid (About page)
    ============================================================ */
 .features-grid {
@@ -882,6 +965,8 @@ ul  { list-style: none; }
   .service-detail--reverse { direction: ltr; }
 
   .footer-inner { flex-direction: column; }
+  .flow-steps { flex-direction: column; gap: 40px; }
+  .flow-step-arrow { display: none; }
 }
 
 @media (max-width: 600px) {
