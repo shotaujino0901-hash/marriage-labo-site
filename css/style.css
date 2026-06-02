@@ -534,7 +534,7 @@ ul  { list-style: none; }
 
 .flow-step-wrap {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   flex: 1;
   min-width: 0;
 }
@@ -600,8 +600,8 @@ ul  { list-style: none; }
   display: flex;
   align-items: center;
   justify-content: center;
+  align-self: center;
   color: var(--pink-light);
-  padding-top: 16px;
 }
 
 
