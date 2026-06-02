@@ -164,6 +164,16 @@
 })();
 
 /* ============================================================
+   Page Hero reveal (inner pages)
+   ============================================================ */
+window.addEventListener('DOMContentLoaded', () => {
+  const pageHero = document.querySelector('.page-hero');
+  if (pageHero) {
+    setTimeout(() => pageHero.classList.add('is-loaded'), 200);
+  }
+});
+
+/* ============================================================
    Scroll Reveal
    ============================================================ */
 (function () {
