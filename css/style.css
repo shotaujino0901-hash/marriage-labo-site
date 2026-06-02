@@ -211,6 +211,7 @@ ul  { list-style: none; }
 .site-nav .btn {
   padding: 10px 24px;
   font-size: 13px;
+  color: var(--white);
 }
 
 /* Hamburger */
