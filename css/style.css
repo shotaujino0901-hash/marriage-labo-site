@@ -969,7 +969,7 @@ ul  { list-style: none; }
   .nav-sns svg { width: 32px; height: 32px; }
 
   .hero-image { display: none; }
-  .hero-content { padding-top: 120px; }
+  .hero-content { padding-top: 120px; padding-bottom: 56px; }
   .hero-title { font-size: clamp(28px, 7vw, 44px); }
 
   .split-section { grid-template-columns: 1fr; }
