@@ -88,7 +88,7 @@
 })();
 
 /* ============================================================
-   Typewriter Effect
+   Typewriter Effect (segment-aware)
    ============================================================ */
 (function () {
   const el = document.querySelector('.typewriter-target');
@@ -101,29 +101,30 @@
   cursor.className = 'typewriter-cursor';
   el.appendChild(cursor);
 
+  // lines = [[{t,p}, ...], ...]
   let lineIdx = 0;
+  let segIdx  = 0;
   let charIdx = 0;
   let lineEl  = null;
+  let segEl   = null;
 
   function nextLine() {
     lineEl = document.createElement('span');
     lineEl.style.display = 'block';
     el.insertBefore(lineEl, cursor);
+    segIdx = 0;
     charIdx = 0;
-    typeChar();
+    nextSegment();
   }
 
-  function typeChar() {
-    if (charIdx < lines[lineIdx].length) {
-      lineEl.textContent += lines[lineIdx][charIdx];
-      charIdx++;
-      setTimeout(typeChar, 80);
-    } else {
+  function nextSegment() {
+    const segs = lines[lineIdx];
+    if (segIdx >= segs.length) {
+      // この行完了
       lineIdx++;
       if (lineIdx < lines.length) {
-        setTimeout(nextLine, 300);
+        setTimeout(nextLine, 280);
       } else {
-        // 全行完了 → カーソル消してサブテキスト表示
         setTimeout(() => {
           cursor.style.display = 'none';
           document.querySelectorAll('.hero-delayed').forEach((el, i) => {
@@ -131,10 +132,28 @@
           });
         }, 400);
       }
+      return;
+    }
+    const seg = segs[segIdx];
+    segEl = document.createElement('span');
+    segEl.className = seg.p ? 'tw-pink' : 'tw-gray';
+    lineEl.appendChild(segEl);
+    charIdx = 0;
+    typeChar();
+  }
+
+  function typeChar() {
+    const seg = lines[lineIdx][segIdx];
+    if (charIdx < seg.t.length) {
+      segEl.textContent += seg.t[charIdx];
+      charIdx++;
+      setTimeout(typeChar, 80);
+    } else {
+      segIdx++;
+      nextSegment();
     }
   }
 
-  // ページ読み込み後に開始
   window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       const hc = document.querySelector('.hero-content');

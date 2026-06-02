@@ -316,10 +316,11 @@ ul  { list-style: none; }
   font-size: clamp(32px, 5vw, 60px);
   font-weight: 700;
   line-height: 1.4;
-  color: var(--brown);
+  color: var(--gray);
   margin-bottom: 24px;
 }
-.hero-title span { color: var(--pink); }
+.hero-title .tw-pink { color: var(--pink); }
+.hero-title .tw-gray { color: var(--gray); }
 
 .hero-sub {
   font-size: 16px;
